@@ -17,5 +17,11 @@ function css() {
   .pipe(gulp.dest('./public/css'));
 }
 
+function watch() {
+  gulp.watch(['src/js/*.js'], scripts);
+  gulp.watch(['src/sass/*.scss'], css);
+}
+
 exports.default = scripts;
 exports.css = css;
+exports.watch = watch;

@@ -1,4 +1,8 @@
-#maze {
-  width: 90%;
-  height: 100%;
+#maze-container {
+  width: 500px;
+  height: 500px;
+  #maze {
+    width: 100%;
+    height: 100%;
+  }
 }
