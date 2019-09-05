@@ -16,6 +16,14 @@ class MazeDrawer {
       }
     }
   }
+
+  createPlayer(canvas) {
+    const pen = canvas.getContext('2d');
+    pen.beginPath();
+    pen.arc(this.strokeSize * 1.5, this.strokeSize * 1.5, this.strokeSize * .3, 0, Math.PI * 2, true);
+    pen.fillStyle = '#E41515';
+    pen.fill();
+  }
 }
 
 module.exports = MazeDrawer;

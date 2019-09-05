@@ -7,7 +7,8 @@ const maze = generator.generate();
 
 const canvas = document.getElementById('maze');
 const drawer = new MazeDrawer({
-  strokeSize: 10,
+  strokeSize: 20,
   strokeColor: '#000'
 });
 drawer.draw(maze, canvas);
+drawer.createPlayer(canvas);
