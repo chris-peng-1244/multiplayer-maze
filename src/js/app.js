@@ -1,5 +1,5 @@
 require('./auth');
-const MazeGenerator = require('./maze');
+const MazeGenerator = require('./maze_generator');
 const MazeDrawer = require('./maze_drawer');
 const Player = require('./player');
 
@@ -17,7 +17,7 @@ drawer.draw();
 
 const player = new Player(1, 1, maze);
 drawer.addPlayer(player);
-drawer.drawPlayers();
+drawer.initPlayers();
 
 bindPlayerMovements(player, drawer);
 
@@ -39,6 +39,6 @@ function bindPlayerMovements(player, drawer) {
     } else if (keyCode === 40) {
       player.moveDown();
     }
-    drawer.drawPlayers();
+    drawer.movePlayers();
   });
 }

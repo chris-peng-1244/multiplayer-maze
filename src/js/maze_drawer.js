@@ -24,10 +24,20 @@ class MazeDrawer {
     this.players.push(player);
   }
 
-  drawPlayers() {
-    for (const player of this.players) {
-      this._drawPlayer(player);
-    }
+  initPlayers() {
+    this.players
+      .forEach(player => {
+        this._drawPlayer(player);
+      });
+  }
+
+  movePlayers() {
+    this.players
+      .filter(player => player.hasMoved())
+      .forEach(player => {
+        this._clearPreviousPlayer(player);
+        this._drawPlayer(player);
+      });
   }
 
   _drawPlayer(player) {
@@ -37,6 +47,11 @@ class MazeDrawer {
           0, Math.PI * 2, true);
     pen.fillStyle = '#E41515';
     pen.fill();
+  }
+
+  _clearPreviousPlayer(player) {
+    const pen = this.canvas.getContext('2d');
+    pen.clearRect(this.strokeSize * player.prevX, this.strokeSize * player.prevY, this.strokeSize, this.strokeSize);
   }
 }
 
