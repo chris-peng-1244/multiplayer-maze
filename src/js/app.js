@@ -13,11 +13,12 @@ const drawer = new MazeDrawer({
   maze,
   canvas,
 });
-drawer.draw();
+drawer.drawMaze();
 
 const player = new Player(1, 1, maze);
 drawer.addPlayer(player);
 drawer.initPlayers();
+drawer.drawFinishPoint(maze.length - 2, maze[0].length - 2);
 
 bindPlayerMovements(player, drawer);
 
@@ -40,5 +41,12 @@ function bindPlayerMovements(player, drawer) {
       player.moveDown();
     }
     drawer.movePlayers();
+    if (isMazeSolved(player)) {
+      alert('You win!');
+    }
   });
+}
+
+function isMazeSolved(player) {
+  return player.x == maze.length - 2 && player.y == maze[0].length - 2;
 }

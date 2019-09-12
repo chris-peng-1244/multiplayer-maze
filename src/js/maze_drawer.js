@@ -7,7 +7,7 @@ class MazeDrawer {
     this.players = [];
   }
 
-  draw() {
+  drawMaze() {
     const pen = this.canvas.getContext('2d');
     pen.fillStyle = this.strokeColor;
     const size = this.strokeSize;
@@ -18,6 +18,27 @@ class MazeDrawer {
         }
       }
     }
+  }
+
+  drawFinishPoint(x, y) {
+    const pen = this.canvas.getContext('2d');
+    pen.fillStyle = 'blue';
+    pen.beginPath();
+    pen.moveTo((x+0.05)*this.strokeSize, (y + 0.35) * this.strokeSize);
+    // upper
+    pen.lineTo((x+0.35)*this.strokeSize, (y + 0.35) * this.strokeSize);
+    pen.lineTo((x+0.5)*this.strokeSize, (y + 0.05) * this.strokeSize);
+    pen.lineTo((x+0.65)*this.strokeSize, (y + 0.35) * this.strokeSize);
+    pen.lineTo((x+0.95)*this.strokeSize, (y + 0.35) * this.strokeSize);
+    // lower
+    pen.lineTo((x+0.75)*this.strokeSize, (y + 0.55) * this.strokeSize);
+    pen.lineTo((x+0.85)*this.strokeSize, (y + 0.95) * this.strokeSize);
+    pen.lineTo((x+0.5)*this.strokeSize, (y + 0.65) * this.strokeSize);
+    pen.lineTo((x+0.15)*this.strokeSize, (y + 0.95) * this.strokeSize);
+    pen.lineTo((x+0.25)*this.strokeSize, (y + 0.55) * this.strokeSize);
+    pen.lineTo((x+0.05)*this.strokeSize, (y + 0.35) * this.strokeSize);
+    pen.closePath();
+    pen.fill();
   }
 
   addPlayer(player) {
